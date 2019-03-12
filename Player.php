@@ -6,15 +6,24 @@ class Player{
     private $vehicule;
     private $state = 10;
 
+    public function __construct( $name, $vehicule, $team = '', $level = 1 ){
+        $this->name = $name;
+        $this->vehicule = $vehicule;
+        $this->team = $team;
+        $this->level = $level;
+        $this->state = $this->generateState();
+    }
+
     public function drive(){
 
     }
 
-    public function updateState( $state ){
 
+    public function increaseLevel( $earned = 1 ){
+        $this->level += $earned;
     }
 
-    public function increaseLevel( $level = 1 ){
-
+    private function generateState(){
+        return rand( 0, 10 );
     }
 }
