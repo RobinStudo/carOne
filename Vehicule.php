@@ -1,5 +1,7 @@
 <?php
 class Vehicule{
+    const MAX_SPEED = 60;
+
     private $model;
     private $power;
 
@@ -22,20 +24,35 @@ class Vehicule{
     }
 
     public function inscreaseSpeed(){
-        $this->speed += $this->power;
+        if( $this->engine === true ){
+            $this->speed += $this->power;
+            if( $this->speed > self::MAX_SPEED ){
+                $this->speed = self::MAX_SPEED;
+            }
+        }
     }
 
     public function decreaseSpeed(){
-        $this->speed -= rand( 1, $this->power );
-        if( $this->speed < 0 ){
-            $this->speed = 0;
+        if( $this->engine === true ){
+            $this->speed -= rand( 1, $this->power );
+            if( $this->speed < 0 ){
+                $this->speed = 0;
+            }
         }
     }
 
     public function setDamage( $damage ){
         $this->state -= $damage;
-        if( $this->state < 0 ){
+        if( $this->state <= 0 ){
             $this->state = 0;
+            $this->stop();
+            return false;
         }
+
+        return true;
+    }
+
+    public function getModel(){
+        return $this->model;
     }
 }

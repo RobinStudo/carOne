@@ -14,13 +14,21 @@ class Player{
         $this->state = $this->generateState();
     }
 
-    public function drive(){
-
+    public function drive( $base ){
+        $random = $base + rand( 1, 20 ) + $this->level + $this->state;
+        return $random;
     }
 
+    public function getIdentity(){
+        return $this->name . ' ' . $this->team;
+    }
 
     public function increaseLevel( $earned = 1 ){
         $this->level += $earned;
+    }
+
+    public function getVehicule(){
+        return $this->vehicule;
     }
 
     private function generateState(){

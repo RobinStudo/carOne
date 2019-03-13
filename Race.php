@@ -15,7 +15,31 @@ class Race{
     }
 
     public function start(){
+        $turnRank = array();
 
+        // Pour chaque tour
+        for( $i=0; $i < $this->turn; $i++ ){
+
+            // Pour chaque joueur
+            foreach( $this->players as $key => $player ){
+                // Calcule d'un coefficient de réussite
+                $thd = $player->drive( $turnRank[ $key ] ?? 0 );
+                // Stockage du coefficient par clé d'un joueur
+                $turnRank[ $key ] = $thd;
+            }
+
+            // Tri par ordre décroissant des coefficients
+            arsort( $turnRank, SORT_NUMERIC );
+        }
+
+        // Association du résultat aux joueurs
+        foreach( $turnRank as $key => $value ){
+            $this->ranking[] = $this->players[ $key ];
+        }
+    }
+
+    public function getTrack(){
+        return $this->track;
     }
 
     public function getRanking(){
