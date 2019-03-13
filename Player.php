@@ -5,6 +5,7 @@ class Player{
     private $level = 1;
     private $vehicule;
     private $state = 10;
+    private static $counter = 0;
 
     public function __construct( $name, $vehicule, $team = '', $level = 1 ){
         $this->name = $name;
@@ -12,6 +13,7 @@ class Player{
         $this->team = $team;
         $this->level = $level;
         $this->state = $this->generateState();
+        self::$counter++;
     }
 
     public function drive( $base ){
@@ -33,5 +35,9 @@ class Player{
 
     private function generateState(){
         return rand( 0, 10 );
+    }
+
+    public static function getCounter(){
+        return self::$counter;
     }
 }

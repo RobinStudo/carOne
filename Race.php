@@ -53,4 +53,14 @@ class Race{
     private function discoverWeather(){
         return rand( 0, 5 );
     }
+
+    public function countPlayers(){
+        return count( $this->players );
+    }
+
+    public static function generate(){
+        $races = [ 'SPA', 'Monaco', '24h du mans', 'Manicourt', 'Singapour' ];
+        $randKey = array_rand( $races );
+        return new Race( $races[ $randKey ], rand( 3, 80 ) );
+    }
 }

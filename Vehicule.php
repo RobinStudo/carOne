@@ -2,6 +2,11 @@
 class Vehicule{
     const MAX_SPEED = 60;
 
+    const LOW = 1;
+    const MEDIUM = 2;
+    const HIGH = 3;
+    const SUPERPOWER = 4;
+
     private $model;
     private $power;
 
