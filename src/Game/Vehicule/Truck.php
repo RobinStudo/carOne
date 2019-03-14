@@ -1,4 +1,6 @@
 <?php
+namespace Game\Vehicule;
+
 class Truck extends Vehicule{
     private $hasTrailer = false;
     protected $capacity = 50;

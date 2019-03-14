@@ -1,4 +1,6 @@
 <?php
+namespace Game\Gameplay;
+
 class Race{
     private $track;
     private $players = array();
@@ -11,7 +13,7 @@ class Race{
         $this->track = $track;
         $this->turn = $turn;
         $this->weather = $this->discoverWeather();
-        $this->startAt = new DateTime();
+        $this->startAt = new \DateTime();
     }
 
     public function start(){

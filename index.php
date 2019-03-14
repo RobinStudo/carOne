@@ -1,10 +1,14 @@
 <?php
-require_once './Race.php';
-require_once './Player.php';
-require_once './Vehicule.php';
-require_once './Truck.php';
-require_once './Car.php';
-require_once './Motorcycle.php';
+require_once 'src/AutoLoader.php';
+AutoLoader::register();
+
+use Game\Vehicule\Vehicule;
+use Game\Vehicule\Motorcycle;
+use Game\Vehicule\Car;
+use Game\Vehicule\Truck;
+use Game\Gameplay\Race;
+use Game\Gameplay\Player;
+
 
 $tesla = new Car( 'Mustang Shelby GT', Vehicule::SUPERPOWER );
 $mustang = new Motorcycle( 'Ducati Monstro', Vehicule::MEDIUM );

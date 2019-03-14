@@ -1,4 +1,6 @@
 <?php
+namespace Game\Vehicule;
+
 abstract class Vehicule{
     const MAX_SPEED = 60;
 

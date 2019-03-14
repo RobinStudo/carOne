@@ -1,4 +1,6 @@
 <?php
+namespace Game\Vehicule;
+
 class Motorcycle extends Vehicule{
     protected $capacity = 0;
 
