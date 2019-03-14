@@ -1,5 +1,5 @@
 <?php
-class Vehicule{
+abstract class Vehicule{
     const MAX_SPEED = 60;
 
     const LOW = 1;
@@ -13,11 +13,14 @@ class Vehicule{
     private $engine = false;
     private $speed = 0;
     private $state = 100;
+    protected $capacity;
 
     public function __construct( $model = 'Tesla Roadster', $power = 5 ){
         $this->model = $model;
         $this->power = $power;
     }
+
+    abstract public function bonus();
 
     public function start(){
         $this->engine = true;
@@ -57,7 +60,8 @@ class Vehicule{
         return true;
     }
 
-    public function getModel(){
+    final public function getModel(){
         return $this->model;
     }
+
 }

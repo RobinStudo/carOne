@@ -1,5 +1,5 @@
 <?php
-class Player{
+final class Player{
     private $name;
     private $team = '';
     private $level = 1;

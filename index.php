@@ -2,11 +2,14 @@
 require_once './Race.php';
 require_once './Player.php';
 require_once './Vehicule.php';
+require_once './Truck.php';
+require_once './Car.php';
+require_once './Motorcycle.php';
 
-$tesla = new Vehicule( 'Tesla Model S', Vehicule::MEDIUM );
-$mustang = new Vehicule( 'Mustang Shelby GT', Vehicule::SUPERPOWER );
-$dbs = new Vehicule( 'Aston Martin DBS', Vehicule::HIGH );
-$twingo = new Vehicule( 'Renault Twingo', Vehicule::LOW );
+$tesla = new Car( 'Mustang Shelby GT', Vehicule::SUPERPOWER );
+$mustang = new Motorcycle( 'Ducati Monstro', Vehicule::MEDIUM );
+$dbs = new Truck( 'Scania R', Vehicule::HIGH );
+$twingo = new Car( 'Aston Martin DBS', Vehicule::LOW );
 
 $robert = new Player( 'Robert de Niro', $dbs );
 $ouioui = new Player( 'Oui-Oui', $tesla, 'Team Champignon', 2 );
