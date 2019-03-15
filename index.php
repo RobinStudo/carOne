@@ -23,7 +23,6 @@ $holmes = new Player( 'Sherlock Holmes', $mustang, 'Team Detective', 5 );
 $franklin = new Player( 'Franklin', $twingo, 'Team Chaussure' );
 $bob = new Player( 'Bob Leponge', $twingo, '' );
 
-
 $monza = new Race( Track::getRandom(), 5 );
 $monza->register( $robert );
 $monza->register( $ouioui );

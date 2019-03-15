@@ -11,11 +11,24 @@ final class Player{
     private static $counter = 0;
 
     public function __construct( $name, $vehicule, $team = '', $level = 1 ){
-        $this->id = $this->generateIdentifier();
         $this->name = $name;
         $this->vehicule = $vehicule;
         $this->team = $team;
         $this->level = $level;
+        $this->init();
+    }
+
+    public function __sleep(){
+        self::$counter--;
+        return [ 'name', 'team', 'level', 'vehicule' ];
+    }
+
+    public function __wakeup(){
+        $this->init();
+    }
+
+    private function init(){
+        $this->id = $this->generateIdentifier();
         $this->state = $this->generateState();
         self::$counter++;
     }
