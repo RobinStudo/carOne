@@ -2,6 +2,7 @@
 namespace Game\Gameplay;
 
 final class Player{
+    private $id;
     private $name;
     private $team = '';
     private $level = 1;
@@ -10,6 +11,7 @@ final class Player{
     private static $counter = 0;
 
     public function __construct( $name, $vehicule, $team = '', $level = 1 ){
+        $this->id = $this->generateIdentifier();
         $this->name = $name;
         $this->vehicule = $vehicule;
         $this->team = $team;
@@ -41,5 +43,14 @@ final class Player{
 
     public static function getCounter(){
         return self::$counter;
+    }
+
+    private function generateIdentifier(){
+        return uniqid( md5( $this->name ) );
+
+        // return rand();
+        // return md5( $this->name . time() );
+        // return uniqid();
+        // return bin2hex( random_bytes( 10 ) );
     }
 }

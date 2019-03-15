@@ -83,4 +83,8 @@ class Track{
         $this->location = $location;
         return $this;
     }
+
+    public function __toString(){
+        return $this->name . ', ' . $this->location;
+    }
 }

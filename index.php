@@ -46,7 +46,7 @@ $randRace->start();
         <title>CarOne</title>
     </head>
     <body>
-        <h2><?php echo $monza->getTrack()->getName(); ?></h2>
+        <h2><?php echo $monza->getTrack(); ?></h2>
         <p>
             Il y a <?php echo $monza->countPlayers(); ?> participants et <?php echo Player::getCounter() - $monza->countPlayers(); ?> spectateurs
         </p>
