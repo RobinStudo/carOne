@@ -1,6 +1,8 @@
 <?php
 namespace Game\Gameplay;
 
+use Game\Entity\Track;
+
 class Race{
     private $track;
     private $players = array();
@@ -61,8 +63,6 @@ class Race{
     }
 
     public static function generate(){
-        $races = [ 'SPA', 'Monaco', '24h du mans', 'Manicourt', 'Singapour' ];
-        $randKey = array_rand( $races );
-        return new Race( $races[ $randKey ], rand( 3, 80 ) );
+        return new Race( Track::getRandom(), rand( 3, 80 ) );
     }
 }

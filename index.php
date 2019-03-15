@@ -8,7 +8,9 @@ use Game\Vehicule\Car;
 use Game\Vehicule\Truck;
 use Game\Gameplay\Race;
 use Game\Gameplay\Player;
+use Game\Entity\Track;
 
+Track::connect();
 
 $tesla = new Car( 'Mustang Shelby GT', Vehicule::SUPERPOWER );
 $mustang = new Motorcycle( 'Ducati Monstro', Vehicule::MEDIUM );
@@ -22,7 +24,7 @@ $franklin = new Player( 'Franklin', $twingo, 'Team Chaussure' );
 $bob = new Player( 'Bob Leponge', $twingo, '' );
 
 
-$monza = new Race( 'Grand prix de Monza', 5 );
+$monza = new Race( Track::getRandom(), 5 );
 $monza->register( $robert );
 $monza->register( $ouioui );
 $monza->register( $holmes );
@@ -44,7 +46,7 @@ $randRace->start();
         <title>CarOne</title>
     </head>
     <body>
-        <h2><?php echo $monza->getTrack(); ?></h2>
+        <h2><?php echo $monza->getTrack()->getName(); ?></h2>
         <p>
             Il y a <?php echo $monza->countPlayers(); ?> participants et <?php echo Player::getCounter() - $monza->countPlayers(); ?> spectateurs
         </p>
@@ -56,7 +58,7 @@ $randRace->start();
             <?php } ?>
         </ul>
 
-        <h2><?php echo $randRace->getTrack(); ?></h2>
+        <h2><?php echo $randRace->getTrack()->getName(); ?></h2>
         <p>
             Il y a <?php echo $randRace->countPlayers(); ?> participants et <?php echo Player::getCounter() - $randRace->countPlayers(); ?> spectateurs
         </p>
@@ -64,6 +66,15 @@ $randRace->start();
             <?php foreach( $randRace->getRanking() as $player ){ ?>
                 <li>
                     <?php echo $player->getIdentity() . ' - ' . $player->getVehicule()->getModel(); ?>
+                </li>
+            <?php } ?>
+        </ul>
+
+        <h2>Les circuits du championnat</h2>
+        <ul>
+            <?php foreach( Track::getAll() as $track ){ ?>
+                <li>
+                    <?php echo $track->getName() . ' - ' . $track->getLocation(); ?>
                 </li>
             <?php } ?>
         </ul>
