@@ -27,6 +27,24 @@ final class Player{
         $this->init();
     }
 
+    public static function save( $player ){
+        $str = serialize( $player );
+        $_SESSION['players'][] = $str;
+    }
+
+    public static function restore(){
+        $saved = $_SESSION['players'];
+
+        $players = array();
+        foreach( $saved as $str ){
+            $players[] = unserialize( $str );
+        }
+
+        $_SESSION['players'] = array();
+
+        return $players;
+    }
+
     private function init(){
         $this->id = $this->generateIdentifier();
         $this->state = $this->generateState();

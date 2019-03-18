@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once 'src/AutoLoader.php';
 AutoLoader::register();
 
@@ -12,6 +14,8 @@ use Game\Entity\Track;
 
 Track::connect();
 
+$players = Player::restore();
+
 $tesla = new Car( 'Mustang Shelby GT', Vehicule::SUPERPOWER );
 $mustang = new Motorcycle( 'Ducati Monstro', Vehicule::MEDIUM );
 $dbs = new Truck( 'Scania R', Vehicule::HIGH );
@@ -22,6 +26,9 @@ $ouioui = new Player( 'Oui-Oui', $tesla, 'Team Champignon', 2 );
 $holmes = new Player( 'Sherlock Holmes', $mustang, 'Team Detective', 5 );
 $franklin = new Player( 'Franklin', $twingo, 'Team Chaussure' );
 $bob = new Player( 'Bob Leponge', $twingo, '' );
+
+Player::save( $ouioui );
+Player::save( $bob );
 
 $monza = new Race( Track::getRandom(), 5 );
 $monza->register( $robert );
