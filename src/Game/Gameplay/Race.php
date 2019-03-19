@@ -3,7 +3,7 @@ namespace Game\Gameplay;
 
 use Game\Entity\Track;
 
-class Race{
+class Race implements \Countable{
     private $track;
     private $players = array();
     private $ranking = array();
@@ -56,6 +56,10 @@ class Race{
 
     private function discoverWeather(){
         return rand( 0, 5 );
+    }
+
+    public function count(){
+        return $this->countPlayers();
     }
 
     public function countPlayers(){

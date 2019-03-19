@@ -27,6 +27,9 @@ $holmes = new Player( 'Sherlock Holmes', $mustang, 'Team Detective', 5 );
 $franklin = new Player( 'Franklin', $twingo, 'Team Chaussure' );
 $bob = new Player( 'Bob Leponge', $twingo, '' );
 
+$bob->addBonus();
+$dbs->addBonus();
+
 Player::save( $ouioui );
 Player::save( $bob );
 
@@ -54,7 +57,7 @@ $randRace->start();
     <body>
         <h2><?php echo $monza->getTrack(); ?></h2>
         <p>
-            Il y a <?php echo $monza->countPlayers(); ?> participants et <?php echo Player::getCounter() - $monza->countPlayers(); ?> spectateurs
+            Il y a <?php echo $monza->countPlayers(); ?> participants et <?php echo Player::getCounter() - count( $monza ); ?> spectateurs
         </p>
         <ul>
             <?php foreach( $monza->getRanking() as $player ){ ?>

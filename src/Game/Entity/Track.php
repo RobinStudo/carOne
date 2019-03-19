@@ -3,7 +3,7 @@ namespace Game\Entity;
 
 use PDO;
 
-class Track{
+class Track implements Entity{
     private static $db;
 
     private $id;
@@ -16,7 +16,7 @@ class Track{
     }
 
     // Exemple : [ 'id' => 1, 'name' => 'SPA', 'length' => 2800, 'location' => 'Belgique' ]
-    private function hydrate( $data ){
+    public function hydrate( $data ){
         foreach( $data as $key => $value ){
             $method = 'set' . ucfirst( $key );
 

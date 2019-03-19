@@ -2,6 +2,8 @@
 namespace Game\Gameplay;
 
 final class Player{
+    use BonusPoint;
+
     private $id;
     private $name;
     private $team = '';
@@ -33,6 +35,10 @@ final class Player{
     }
 
     public static function restore(){
+        if( empty( $_SESSION['players'] ) ){
+            return array();
+        }
+
         $saved = $_SESSION['players'];
 
         $players = array();

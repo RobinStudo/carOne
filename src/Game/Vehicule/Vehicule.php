@@ -2,6 +2,8 @@
 namespace Game\Vehicule;
 
 abstract class Vehicule{
+    use \Game\Gameplay\BonusPoint;
+
     const MAX_SPEED = 60;
 
     const LOW = 1;
